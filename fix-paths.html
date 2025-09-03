@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path Fixer for Only Models Agency</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Path Fixer for Only Models Agency</h1>
+        <p>This script will help fix the paths in the downloaded website files to make them work locally.</p>
+        
+        <h2>Instructions:</h2>
+        <ol>
+            <li>Make sure you have a local web server running (like Live Server in VS Code or XAMPP)</li>
+            <li>Open the website through your local web server</li>
+            <li>Use the buttons below to navigate to the fixed pages</li>
+        </ol>
+        
+        <h2>Navigation:</h2>
+        <a href="index.html" class="button">Go to Main Page</a>
+        <a href="onlymodels.agency/uk/my-mozhem-pomoch-vam-sozdat-uspeshnyj-profyl-onlyfans/index.html" class="button">Go to Ukrainian Page</a>
+        
+        <h2>How to Run a Local Web Server:</h2>
+        <h3>Option 1: Using Visual Studio Code</h3>
+        <ol>
+            <li>Install the "Live Server" extension in VS Code</li>
+            <li>Open this folder in VS Code</li>
+            <li>Right-click on index.html and select "Open with Live Server"</li>
+        </ol>
+        
+        <h3>Option 2: Using Python</h3>
+        <pre>python -m http.server</pre>
+        <p>Then open <a href="http://localhost:8000">http://localhost:8000</a> in your browser</p>
+        
+        <h3>Option 3: Using Node.js</h3>
+        <p>Install http-server:</p>
+        <pre>npm install -g http-server</pre>
+        <p>Run the server:</p>
+        <pre>http-server</pre>
+        <p>Then open <a href="http://localhost:8080">http://localhost:8080</a> in your browser</p>
+    </div>
+    
+    <script>
+        // This script will help fix relative paths when browsing the site locally
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fix for images and other resources
+            const fixRelativePaths = function() {
+                // Fix image paths
+                document.querySelectorAll('img[src^="https://onlymodels.agency/"]').forEach(img => {
+                    img.src = img.src.replace('https://onlymodels.agency/', './onlymodels.agency/');
+                });
+                
+                // Fix CSS paths
+                document.querySelectorAll('link[rel="stylesheet"][href^="https://onlymodels.agency/"]').forEach(link => {
+                    link.href = link.href.replace('https://onlymodels.agency/', './onlymodels.agency/');
+                });
+                
+                // Fix script paths
+                document.querySelectorAll('script[src^="https://onlymodels.agency/"]').forEach(script => {
+                    script.src = script.src.replace('https://onlymodels.agency/', './onlymodels.agency/');
+                });
+            };
+            
+            // Run the fix when the page loads
+            fixRelativePaths();
+            
+            // Also run the fix when navigating to other pages
+            const observer = new MutationObserver(fixRelativePaths);
+            observer.observe(document.documentElement, { childList: true, subtree: true });
+        });
+    </script>
+</body>
+</html>
