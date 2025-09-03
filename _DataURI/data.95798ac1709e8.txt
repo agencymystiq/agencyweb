@@ -1,0 +1,1 @@
+chrome-extension://ldnheaepmnmbjjjahokphckbpgciiaed/assets/src/contentScript/index.js
